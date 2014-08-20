@@ -16,11 +16,15 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
+					<Add option="-Os" />
+					<Add option="-O2" />
 					<Add option="-Wmissing-include-dirs" />
+					<Add option="-pedantic" />
 					<Add option="-static" />
 					<Add option="-DBUILD_DLL" />
 				</Compiler>
 				<Linker>
+					<Add option="-s" />
 					<Add option="-static" />
 					<Add library="C:\boost_1_54_0\bin.v2\libs\regex\build\gcc-mingw-4.8.1\debug\link-static\libboost_regex-mgw48-d-1_54.a" />
 				</Linker>

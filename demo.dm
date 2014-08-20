@@ -1,14 +1,6 @@
 mob
-	var/expression = "(\[A-Z\])(\[a-z\]+)"
-	var/format = "sss"
-	/*
-		This default expression works for anything from:
-			foo = bar
-		to:
-			foo=bar
-		to:
-			foo=          bar
-	*/
+	var/expression = "\\S+"
+	var/format = "*"
 
 	var/datum/regex/results
 
@@ -27,19 +19,19 @@ mob
 
 		compare_casesensitive(t as text)
 			results = regEx_compare(t, expression)
-			results.report()
+			world << results.report()
 
 		compare(t as text)
 			results = regex_compare(t, expression)
-			results.report()
+			world << results.report()
 
 		find_casesensitive(t as text)
 			results = regEx_find(t, expression)
-			results.report()
+			world << results.report()
 
 		find(t as text)
 			results = regex_find(t, expression)
-			results.report()
+			world << results.report()
 
 		replaceall_casesensitive(t as text)
 			usr << regEx_replaceall(t, expression, format)
@@ -55,17 +47,8 @@ mob
 
 		findall(t as text)
 			results = regex_findall(t, expression)
-			results.report()
+			world << results.report()
 
 		findall_casesensitive(t as text)
 			results = regEx_findall(t, expression)
-			results.report()
-
-#define KEYWORD "\[\\Q+-\\E\]\[a-z@\]+"
-#define RANKNAME "\\<\[\\w \]+\\>"
-		testparse()
-			var/datum/regex/Rgx = regex_findall(file2text("map.dmm"),"\\(1,1,\[0-9\]+\\) = \\{\"\\n((\[a-z\]+\\n)+)\"\\}")
-			world.log << Rgx.report()
-
-/client/verb/mykey()
-	world << key
+			world << results.report()

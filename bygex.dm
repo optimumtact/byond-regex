@@ -1,5 +1,5 @@
 #ifndef LIBREGEX_LIBRARY
-	#define LIBREGEX_LIBRARY "bygex"
+	#define LIBREGEX_LIBRARY "bin/bygex"
 #endif
 
 proc
@@ -56,7 +56,7 @@ proc
 		src.str = str
 		src.exp = exp
 
-		if(findtext(results, "Err", 1, 4))	//error message
+		if(findtext(results, "$Err$", 1, 6))	//error message
 			src.error = results
 		else
 			var/list/L = params2list(results)

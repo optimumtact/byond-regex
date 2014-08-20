@@ -58,44 +58,45 @@ char *smatches2params(boost::smatch const& results, unsigned int from){
         }
         if(ss.good()){return return_result(ss.str());}
     }
-    return return_result("Err: smatches2params failed.");
+    return return_result("$Err$ smatches2params failed.");
 }
 
+//Error code messages
 const char *err2msg(boost::regex_error *err){
     switch(err->code()){
         case boost::regex_constants::error_collate:
-            return "Err: The expression contained an invalid collating element name.";
+            return "$Err$ The expression contained an invalid collating element name.";
         case boost::regex_constants::error_ctype:
-            return "Err: The expression contained an invalid character class name.";
+            return "$Err$ The expression contained an invalid character class name.";
         case boost::regex_constants::error_escape:
-            return "Err: The expression contained an invalid escaped character, or a trailing escape.";
+            return "$Err$ The expression contained an invalid escaped character, or a trailing escape.";
         case boost::regex_constants::error_backref:
-            return "Err: The expression contained an invalid back reference.";
+            return "$Err$ The expression contained an invalid back reference.";
         case boost::regex_constants::error_brack:
-            return "Err: The expression contained mismatched brackets ([ and ]).";
+            return "$Err$ The expression contained mismatched brackets ([ and ]).";
         case boost::regex_constants::error_paren:
-            return "Err: The expression contained mismatched parentheses (( and )).";
+            return "$Err$ The expression contained mismatched parentheses (( and )).";
         case boost::regex_constants::error_brace:
-            return "Err: The expression contained mismatched braces ({ and }).";
+            return "$Err$ The expression contained mismatched braces ({ and }).";
         case boost::regex_constants::error_badbrace:
-            return "Err: The expression contained an invalid range between braces ({ and }).";
+            return "$Err$ The expression contained an invalid range between braces ({ and }).";
         case boost::regex_constants::error_range:
-            return "Err: The expression contained an invalid character range.";
+            return "$Err$ The expression contained an invalid character range.";
         case boost::regex_constants::error_space:
-            return "Err: There was insufficient memory to convert the expression into a finite state machine.";
+            return "$Err$ There was insufficient memory to convert the expression into a finite state machine.";
         case boost::regex_constants::error_badrepeat:
-            return "Err: The expression contained a repeat specifier (one of *?+{) that was not preceded by a valid regular expression.";
+            return "$Err$ The expression contained a repeat specifier (one of *?+{) that was not preceded by a valid regular expression.";
         case boost::regex_constants::error_complexity:
-            return "Err: The complexity of an attempted match against a regular expression exceeded a pre-set level.";
+            return "$Err$ The complexity of an attempted match against a regular expression exceeded a pre-set level.";
         case boost::regex_constants::error_stack:
-            return "Err: There was insufficient memory to determine whether the regular expression could match the specified character sequence.";
+            return "$Err$ There was insufficient memory to determine whether the regular expression could match the specified character sequence.";
         default:
-            return "Err: Unknown Error.";
+            return "$Err$ Unknown Error.";
     }
 }
 
 char *regex_compare_backend(int argc, char *argv[], boost::regex::flag_type match_options=0){
-    if(argc < 2){return return_result("Err: Not enough arguments.");}
+    if(argc < 2){return return_result("$Err$ Not enough arguments.");}
 
     std::string subject = argv[0];
     std::string::const_iterator from = subject.begin();
@@ -124,7 +125,7 @@ char *regex_compare_backend(int argc, char *argv[], boost::regex::flag_type matc
         }
     }
     catch(boost::regex_error &err){return return_result(err2msg(&err));}
-    catch(...){return return_result("Err: Unknown Error.");}
+    catch(...){return return_result("$Err$ Unknown Error.");}
 }
 
 // (str, expr, from, to)
@@ -138,7 +139,7 @@ char *regex_compare(int argc, char *argv[]){
 }
 
 char *regex_findall_backend(int argc, char *argv[], boost::regex::flag_type match_options=0){
-    if(argc < 2){return return_result("Err: Not enough arguments.");}
+    if(argc < 2){return return_result("$Err$ Not enough arguments.");}
 
     std::string subject = argv[0];
     std::string::const_iterator from = subject.begin();
@@ -163,15 +164,15 @@ char *regex_findall_backend(int argc, char *argv[], boost::regex::flag_type matc
         }
 
         if(ss.good()){return return_result(ss.str());}
-        return return_result("Err: Bad stringstream.");
+        return return_result("$Err$ Bad stringstream.");
     }
     catch(boost::regex_error &err){return return_result(err2msg(&err));}
-    catch(...){return return_result("Err: Unknown Error.");}
+    catch(...){return return_result("$Err$ Unknown Error.");}
 
 }
 
 char *regex_find_backend(int argc, char *argv[], boost::regex::flag_type match_options=0){
-    if(argc < 2){return return_result("Err: Not enough arguments.");}
+    if(argc < 2){return return_result("$Err$ Not enough arguments.");}
 
     std::string subject = argv[0];
     std::string::const_iterator from = subject.begin();
@@ -199,7 +200,7 @@ char *regex_find_backend(int argc, char *argv[], boost::regex::flag_type match_o
         }
     }
     catch(boost::regex_error &err){return return_result(err2msg(&err));}
-    catch(...){return return_result("Err: Unknown Error.");}
+    catch(...){return return_result("$Err$ Unknown Error.");}
 }
 
 // (str, expr, from, to)
@@ -213,7 +214,7 @@ char *regex_find(int argc, char *argv[]){
 }
 
 char *regex_replace_backend(int argc, char *argv[], boost::regex::flag_type match_options=boost::match_default, boost::match_flag_type fmt_options=boost::format_default){
-    if(argc < 3){return return_result("Err: Not enough arguments.");}
+    if(argc < 3){return return_result("$Err$ Not enough arguments.");}
 
     std::string subject = argv[0];
     std::string fmt = argv[2];
@@ -224,7 +225,7 @@ char *regex_replace_backend(int argc, char *argv[], boost::regex::flag_type matc
         return return_result(formatted);
     }
     catch(boost::regex_error &err){return return_result(err2msg(&err));}
-    catch(...){return return_result("Err: Unknown Error.");}
+    catch(...){return return_result("$Err$ Unknown Error.");}
 }
 
 // (str, expr, fmt, from, to)
