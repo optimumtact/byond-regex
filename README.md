@@ -11,7 +11,7 @@ it has been slightly modified to properly compile on linux platforms
     #lib boost regex
     sudo apt-get install libboostregex-dev:i386
 
-On most systems it should be enough to invoke make to build the shared library - Please note that it always builds a 32 bit lib, byond doesn't support 64 bit libraries, then move it to your local lib location and invoke ldconfig to rebuild the library store
+On most systems it should be enough to invoke make to build the shared library - Please note that it always builds a 32 bit lib, as byond doesn't support 64 bit libraries
 
     make
     sudo mv libbygex.so /usr/local/lib/
