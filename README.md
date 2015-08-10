@@ -11,9 +11,11 @@ it has been slightly modified to support linux compilation
     #lib boost regex
     sudo apt-get install libboostregex-dev:i386
 
-On most systems it should be enough to invoke make to build the shared library - Please note that it always builds a 32 bit lib, byond doesn't support 64 bit libraries 
+On most systems it should be enough to invoke make to build the shared library - Please note that it always builds a 32 bit lib, byond doesn't support 64 bit libraries, then move it to your local lib location and invoke ldconfig to rebuild the library store
 
-You can then place this in the appropriate location on your server - for debian based systems this is usually usr/local/lib
+    make
+    sudo mv libbygex.so /usr/local/lib/
+    sudo ldconfig
 
 #Manual method
 Invoke the following to compile bygex for linux - you'll need to have 32 bit cross compilation libs installed
