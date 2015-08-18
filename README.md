@@ -19,24 +19,24 @@ If you're only on 32 bit, then it should be enough to simply
 Then simply invoke make to build the shared library - Please note that it always builds a 32 bit lib, as byond doesn't support 64 bit libraries
 
     make
-    #Move the library to the shared libs folder (Note instructions here are likely debian specific)
-    sudo mv libbygex.so /usr/local/lib/
-    #Recalculate the lib paths
-    sudo ldconfig
 
-You can then test that this has installed by invoking the following
+You can then test that this is correctly compiled by invoking the following
 
     make test
 
-This will build a test executable and run it for some quick comparisons then clean up after itself - if your library is not in the right location this will fail to compile
+This will build a test executable and run it for some quick comparisons then clean up after itself
 
+##Getting this to work with tgstation13
+Now we have to put it somewhere where byond will see it, by default tgstation13 looks for bin/bygex so lets put the bygex.so there
 
-#Manual method
+    mv libbygex.so bin/.
+    #soft link the so to the bygex path
+    ln -s bin/libbygex.so bygex 
+
+Now you should be able to run DreamDaemon as usual and have the library automatically picked up
+
+#Manual Compilation
 Invoke the following to compile bygex for linux
 
     g++ -c -m32 -Wall -lstdc++ -lboost_regex -fPIC -o bygex.o main.cpp
     g++ bygex.o -m32 -fPIC -lstdc++ -lboost_regex -Wl,-soname,libygex.so.0.1 -shared -o libbygex.so
-
-
-Finally you will have to patch tgstation13 code
-TODO
