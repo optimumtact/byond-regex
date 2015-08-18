@@ -18,6 +18,7 @@ it has been slightly modified to properly compile on linux platforms
     
     sudo apt-get install libboostregex-dev
 
+##Compilation and testing
 Then simply invoke make to build the shared library - Please note that it always builds a 32 bit lib, as byond doesn't support 64 bit libraries
 
     make
