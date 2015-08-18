@@ -5,6 +5,8 @@ This is an interface to boost regex originally developed by carn
 
 it has been slightly modified to properly compile on linux platforms
 
+##64bit instructions
+
     Packages required to build (debian/ubuntu platforms) (assumes 64 bit)
     #gcc multilib
     sudo apt-get install gcc-4.9-multilib g++-4.9-multilib
@@ -12,7 +14,7 @@ it has been slightly modified to properly compile on linux platforms
     dpkg --add-architecture i386
     sudo apt-get install libboostregex-dev:i386
 
-If you're only on 32 bit, then it should be enough to simply
+##32 bit
     
     sudo apt-get install libboostregex-dev
 
@@ -22,12 +24,13 @@ Then simply invoke make to build the shared library - Please note that it always
 
 You can then test that this is correctly compiled by invoking the following
 
+    export LD_LIBRARY_PATH=.
     make test
 
 This will build a test executable and run it for some quick comparisons then clean up after itself
 
 ##Getting this to work with tgstation13
-Now we have to put it somewhere where byond will see it, by default tgstation13 looks for bin/bygex so lets put the bygex.so there
+Now we have to put it somewhere where byond will see it, by default tgstation13 looks for bin/bygex so lets put the libbygex.so there
 
     mv libbygex.so bin/.
     #soft link the so to the bygex path

@@ -12,8 +12,8 @@ LDFLAGS = ${LIBS}
 
 #Flags for building the test project
 TESTCFLAGS = -m32 -std=c++11 -pedantic -Werror -Wall -Wextra ${INCS}
-TESTLDFLAGS = -lbygex
+TESTLDFLAGS = -L. -lbygex
 
 #Flags for building the so
-SOFLAGS = --shared -Wl,-soname,libygex.so.${VERSION}
+SOFLAGS = --shared
 CC = g++

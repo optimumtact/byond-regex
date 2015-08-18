@@ -11,17 +11,14 @@ bygex:
 	@${CC} -o libbygex.so bygex.o ${LDFLAGS} ${CFLAGS} ${SOFLAGS}
 
 # clean up everything managed by make
-clean:
+clean:cleantest
 	@echo cleaning objects and temporary files
 	@find . -iname '*.o' -delete
 	@echo cleaning shared libraries
 	@find . -iname '*.so' -delete
-	@echo removing test client executable
-	@find . -iname 'bygex_test' -delete
 
 buildtest:
 	@echo Compiling test executable
-	@${CC} -c -o bygex.o main.cpp ${LDFLAGS} ${CFLAGS}
 	${CC} -o bygex_test client.cpp ${TESTLDFLAGS} ${TESTCFLAGS}
 
 test:buildtest
@@ -29,5 +26,9 @@ test:buildtest
 	@echo
 	make -s clean
 
-.PHONY: all clean bygex buildtest test
+cleantest:
+	@echo removing test client executable
+	@find . -iname 'bygex_test' -delete
+
+.PHONY: all clean bygex buildtest test cleantest
 
