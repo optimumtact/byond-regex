@@ -12,6 +12,8 @@ it has been slightly modified to properly compile on linux platforms
     sudo apt-get install gcc-4.9-multilib g++-4.9-multilib
     #lib boost regex
     dpkg --add-architecture i386
+    sudo apt-get install libboost-regex-dev:i386
+    #We've had reports of this command failing with an unmet dependency on libboost1.55-dev:i386, if so, try this
     sudo apt-get install libboost1.55-dev:i386 libboost-regex-dev:i386
 
 ##32 bit
