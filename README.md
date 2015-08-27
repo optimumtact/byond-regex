@@ -12,7 +12,7 @@ it has been slightly modified to properly compile on linux platforms
     sudo apt-get install gcc-4.9-multilib g++-4.9-multilib
     #lib boost regex
     dpkg --add-architecture i386
-    sudo apt-get install libboostregex-dev:i386
+    sudo apt-get install libboost1.55-dev:i386 libboost-regex-dev:i386
 
 ##32 bit
     
