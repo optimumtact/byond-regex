@@ -9,7 +9,7 @@ it has been slightly modified to properly compile on linux platforms
 
     Packages required to build (debian/ubuntu platforms) (assumes 64 bit)
     #gcc multilib
-    sudo apt-get install gcc-4.9-multilib g++-4.9-multilib
+    sudo apt-get install gcc-multilib g++-multilib
     #lib boost regex
     sudo dpkg --add-architecture i386
     sudo apt-get install libboost-regex-dev:i386
