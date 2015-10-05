@@ -74,7 +74,7 @@ Then run dreamdaemon with strace, to see the exact set of paths it's searching f
 If the file is being read correctly it should look like the following
 
     user@raptor:~/tgstation$ strace DreamDaemon tgstation.dmb 45000 -trusted -logself 2>&1 | grep '^open(".*bygex.*"'
-    open("bin/bygex", O_RDONLY|O_CLOEXEC)   = 
+    open("bin/bygex", O_RDONLY|O_CLOEXEC)   = 4
 
 ##Set LD LIBRARY PATH
 
