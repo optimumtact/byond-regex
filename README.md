@@ -46,3 +46,16 @@ Invoke the following to compile bygex for linux
 
     g++ -c -m32 -Wall -lstdc++ -lboost_regex -fPIC -o bygex.o main.cpp
     g++ bygex.o -m32 -fPIC -lstdc++ -lboost_regex -Wl,-soname,libygex.so.0.1 -shared -o libbygex.so
+
+#Troubleshooting
+First check that the bin/bygex path exists exactly, no added file extension or anything, make sure that the permissions on that file are set correctly, so that the DreamDaemon process can read the file for loading.
+
+Then run dreamdaemon with strace, to see the exact set of paths it's searching for bygex in, make sure your library sits on at least one of the paths it looks in.
+    
+    strace DreamDaemon {yourstation}.dmb 45000 -trusted -logself 2>&1 | grep '^open(".*bygex.*"'
+
+If you're still having trouble, try setting the LD_LIBRARY_PATH to the folder containing bygex, run dreamdaemon with strace again to see if it's finding your lib
+
+    export LD_LIBRARY_PATH=/path/to/folder/containing/your/bygex/lib
+    
+Finally if that's not working, open up the bygex dm code in your repo ( on tgstation this is https://github.com/optimumtact/-tg-station/blob/master/code/__HELPERS/bygex/bygex.dm#L29 ) and edit the define to be the direct full path to your compiled libbygex.so file. Run DreamDaemon with strace again and ensure that it loads your file.
