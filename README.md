@@ -48,14 +48,37 @@ Invoke the following to compile bygex for linux
     g++ bygex.o -m32 -fPIC -lstdc++ -lboost_regex -Wl,-soname,libygex.so.0.1 -shared -o libbygex.so
 
 #Troubleshooting
-First check that the bin/bygex path exists exactly, no added file extension or anything, make sure that the permissions on that file are set correctly, so that the DreamDaemon process can read the file for loading.
+
+##Basic steps
+
+First check that the bin/bygex path exists exactly, no added file extensions or extra characters, if you followed earlier instructions it will be there as a softlink to libbygex.so, you can use file bin/bygex to verify that is the case, the output should look like the following 
+
+    file bin/bygex
+    bin/bygex: symbolic link to `libbygex.so'
+
+make sure that the permissions on that file are set correctly, so that the user the DreamDaemon process runs as can read the file for loading.
+
+##Strace the file
 
 Then run dreamdaemon with strace, to see the exact set of paths it's searching for bygex in, make sure your library sits on at least one of the paths it looks in.
     
     strace DreamDaemon {yourstation}.dmb 45000 -trusted -logself 2>&1 | grep '^open(".*bygex.*"'
 
+##Set LD LIBRARY PATH
+
 If you're still having trouble, try setting the LD_LIBRARY_PATH to the folder containing bygex, run dreamdaemon with strace again to see if it's finding your lib
 
     export LD_LIBRARY_PATH=/path/to/folder/containing/your/bygex/lib
-    
-Finally if that's not working, open up the bygex dm code in your repo ( on tgstation this is https://github.com/optimumtact/-tg-station/blob/master/code/__HELPERS/bygex/bygex.dm#L29 ) and edit the define to be the direct full path to your compiled libbygex.so file. Run DreamDaemon with strace again and ensure that it loads your file.
+
+##Modify tgstation code    
+
+Finally if that's not working, open up the bygex dm code in your repo and edit the define to be the direct full path to your compiled libbygex.so file. Run DreamDaemon with strace again and ensure that it loads your file.
+
+On tgstation the file with the library path define is https://github.com/optimumtact/-tg-station/blob/master/code/__HELPERS/bygex/bygex.dm
+
+##Strace reports it found the file but I still get runtime exceptions
+
+If your strace output looks like the following, but you still get runtime errors in the log, this usually indicates that there is a compilation issue with the library, first try running the make test again. If that doesn't work, we've had reports that manual compilation instead of using make will sometimes resolve the issue
+
+    user@raptor:~/tgstation$ strace DreamDaemon tgstation.dmb 45000 -trusted -logself 2>&1 | grep '^open(".*bygex.*"'
+    open("bin/bygex", O_RDONLY|O_CLOEXEC)   = 4
