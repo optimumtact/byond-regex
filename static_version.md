@@ -11,7 +11,7 @@ Compile a bygex.o with position indepdent code for 32 bit os
 
 Now link this into a shared object, including the entire boost_regex.a
 
-    gcc gcc bygex.o /usr/lib/i386-linux-gnu/libboost_regex.a -o libbygex.so -shared -m32 -lstdc++
+    gcc bygex.o /usr/lib/i386-linux-gnu/libboost_regex.a -o libbygex.so -shared -m32 -lstdc++
 
 #Testing on your linux
 I'd love to hear from people if this .so works without issue on their system, please check out the repo, move the statictestbygex.so file to libbygex.so and complile the test exe with
