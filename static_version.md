@@ -1,5 +1,5 @@
 #Static standalone version
-This is a project to compile a fully working completely static bygex .so object for reuse across all 36 bit linux OS's (non linux OS's unfortunately not supported)
+This is a project to compile a fully working completely static bygex .so object for reuse across linux distros
 
 #Progress so far
 I have a .so that contains only libstdc++,libgcc and libc, which should be almost universially available with a stable ABI, I'm in the process of testing this to see it works across many distros
