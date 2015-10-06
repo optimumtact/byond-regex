@@ -6,6 +6,7 @@ I have a .so that contains only libstdc++,libgcc and libc, which should be almos
 
 #Steps to get this working
 Compile a bygex.o with position indepdent code for 32 bit os
+    
     gcc main.cpp -o bygex.o -m32 -c -fpic
 
 Now link this into a shared object, including the entire boost_regex.a
