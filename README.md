@@ -5,7 +5,7 @@ This is an interface to boost regex originally developed by carn
 
 it has been slightly modified to properly compile on linux platforms
 
-##64bit instructions
+##Debian/Ubuntu 64-bit instructions
 
     Packages required to build (debian/ubuntu platforms) (assumes 64 bit)
     #gcc multilib
@@ -15,10 +15,26 @@ it has been slightly modified to properly compile on linux platforms
     sudo apt-get install libboost-regex-dev:i386
     #We've had reports of this command failing with an unmet dependency on libboost1.55-dev:i386, if so, try this
     sudo apt-get install libboost1.55-dev:i386 libboost-regex-dev:i386
+    
+##RHEL/CentOS 64-bit instructions
 
-##32 bit
+    Packages required to build (RHEL/CentOS platforms) (assumes 64 bit)
+    #libgcc.i686
+    sudo yum install gcc gcc-c++ libgcc libgcc.i686
+    #lib boost regex
+    sudo yum install boost-devel boost-devel.i686
+    #glibc-devel.i686
+    sudo yum install glibc-devel glibc-devel.i686
+    #time
+    sudo yum install time
+
+##Debian/Ubuntu 32-bit instructions
     
     sudo apt-get install libboostregex-dev
+    
+##RHEL/CentOS 32-bit instructions
+    
+    sudo yum install gcc gcc-c++ libgcc boost-devel glibc-devel time
 
 ##Compilation and testing
 Then simply invoke make to build the shared library - Please note that it always builds a 32 bit lib, as byond doesn't support 64 bit libraries
