@@ -53,7 +53,7 @@ Now we have to put it somewhere where BYOND will see it. By default tgstation13 
 
     mv libbygex.so bin/.
     #soft link the so to the bygex path
-    ln -s bin/libbygex.so bygex 
+    ln -s bin/libbygex.so bin/bygex
 
 Now you should be able to run DreamDaemon as usual and have the library automatically picked up.
 
