@@ -9,6 +9,7 @@ bygex:
 	@echo compiling bygex
 	@${CC} -c -o bygex.o main.cpp ${LDFLAGS} ${CFLAGS}
 	@${CC} -o libbygex.so bygex.o ${LDFLAGS} ${CFLAGS} ${SOFLAGS}
+	@echo Success
 
 # clean up everything managed by make
 clean:cleantest
