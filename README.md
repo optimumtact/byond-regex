@@ -1,11 +1,11 @@
 # byond-regex
-Automatically exported from code.google.com/p/byond-regex
+(automatically exported from code.google.com/p/byond-regex)
 
-This is an interface to boost regex originally developed by carn
+This is an interface to boost regex originally developed by carn. It has been slightly modified to successfully compile on Linux platforms.
 
-it has been slightly modified to properly compile on linux platforms
+##Compile/Install Instructions
 
-##64bit instructions
+##Debian/Ubuntu 64-bit instructions
 
     Packages required to build (debian/ubuntu platforms) (assumes 64 bit)
     #gcc multilib
@@ -15,17 +15,33 @@ it has been slightly modified to properly compile on linux platforms
     sudo apt-get install libboost-regex-dev:i386
     #We've had reports of this command failing with an unmet dependency on libboost1.55-dev:i386, if so, try this
     sudo apt-get install libboost1.55-dev:i386 libboost-regex-dev:i386
+    
+##RHEL/CentOS 64-bit instructions
 
-##32 bit
+    Packages required to build (RHEL/CentOS platforms) (assumes 64 bit)
+    #libgcc.i686
+    sudo yum install gcc gcc-c++ libgcc libgcc.i686
+    #lib boost regex
+    sudo yum install boost-devel boost-devel.i686
+    #glibc-devel.i686
+    sudo yum install glibc-devel glibc-devel.i686
+    #time
+    sudo yum install time
+
+##Debian/Ubuntu 32-bit instructions
     
     sudo apt-get install libboostregex-dev
+    
+##RHEL/CentOS 32-bit instructions
+    
+    sudo yum install gcc gcc-c++ libgcc boost-devel glibc-devel time
 
 ##Compilation and testing
 Then simply invoke make to build the shared library - Please note that it always builds a 32 bit lib, as byond doesn't support 64 bit libraries
 
     make
 
-You can then test that this is correctly compiled by invoking the following
+You can then test that byond-regex is correctly compiled by invoking the following
 
     export LD_LIBRARY_PATH=.
     make test
@@ -33,13 +49,13 @@ You can then test that this is correctly compiled by invoking the following
 This will build a test executable and run it for some quick comparisons then clean up after itself
 
 ##Getting this to work with tgstation13
-Now we have to put it somewhere where byond will see it, by default tgstation13 looks for bin/bygex, I'm not a huge fan of this as it means the file extension isn't there to indicate the actual file type, so I recommend the following, moving libbygex.so to the bin folder, then softlinking bin/bygex to it, this ensures you can see at a glance when you ls -l that bygex is a soft link to libbygex.so and that it is a shared library.
+Now we have to put it somewhere where BYOND will see it. By default tgstation13 looks for bin/bygex - I'm not a huge fan of this as it means the file extension isn't there to indicate the actual file type, so I recommend moving libbygex.so to the bin folder, then softlinking bin/bygex to it. This ensures you can see at a glance when you ls -l that bygex is a soft link to libbygex.so and that it is a shared library.
 
     mv libbygex.so bin/.
     #soft link the so to the bygex path
     ln -s bin/libbygex.so bygex 
 
-Now you should be able to run DreamDaemon as usual and have the library automatically picked up
+Now you should be able to run DreamDaemon as usual and have the library automatically picked up.
 
 #Manual Compilation
 Invoke the following to compile bygex for linux
