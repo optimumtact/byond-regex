@@ -1,9 +1,9 @@
 # byond-regex
-Automatically exported from code.google.com/p/byond-regex
+(automatically exported from code.google.com/p/byond-regex)
 
-This is an interface to boost regex originally developed by carn
+This is an interface to boost regex originally developed by carn. It has been slightly modified to successfully compile on Linux platforms.
 
-it has been slightly modified to properly compile on linux platforms
+##Compile/Install Instructions
 
 ##Debian/Ubuntu 64-bit instructions
 
@@ -41,7 +41,7 @@ Then simply invoke make to build the shared library - Please note that it always
 
     make
 
-You can then test that this is correctly compiled by invoking the following
+You can then test that byond-regex is correctly compiled by invoking the following
 
     export LD_LIBRARY_PATH=.
     make test
@@ -49,13 +49,13 @@ You can then test that this is correctly compiled by invoking the following
 This will build a test executable and run it for some quick comparisons then clean up after itself
 
 ##Getting this to work with tgstation13
-Now we have to put it somewhere where byond will see it, by default tgstation13 looks for bin/bygex, I'm not a huge fan of this as it means the file extension isn't there to indicate the actual file type, so I recommend the following, moving libbygex.so to the bin folder, then softlinking bin/bygex to it, this ensures you can see at a glance when you ls -l that bygex is a soft link to libbygex.so and that it is a shared library.
+Now we have to put it somewhere where BYOND will see it. By default tgstation13 looks for bin/bygex - I'm not a huge fan of this as it means the file extension isn't there to indicate the actual file type, so I recommend moving libbygex.so to the bin folder, then softlinking bin/bygex to it. This ensures you can see at a glance when you ls -l that bygex is a soft link to libbygex.so and that it is a shared library.
 
     mv libbygex.so bin/.
     #soft link the so to the bygex path
     ln -s bin/libbygex.so bygex 
 
-Now you should be able to run DreamDaemon as usual and have the library automatically picked up
+Now you should be able to run DreamDaemon as usual and have the library automatically picked up.
 
 #Manual Compilation
 Invoke the following to compile bygex for linux
