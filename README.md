@@ -1,3 +1,5 @@
+# DEPRECATED - BYOND has native regex as of 510, tg-station has support for that, replacing the byond-regex project
+
 # byond-regex
 (automatically exported from code.google.com/p/byond-regex)
 
