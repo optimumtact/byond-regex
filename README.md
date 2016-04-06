@@ -17,7 +17,10 @@ This is an interface to boost regex originally developed by carn. It has been sl
     sudo apt-get install libboost-regex-dev:i386
     #We've had reports of this command failing with an unmet dependency on libboost1.55-dev:i386, if so, try this
     sudo apt-get install libboost1.55-dev:i386 libboost-regex-dev:i386
-    #We've also had some issues with installing the libboost1.58 as it seems to have a package dependency that is not multiarched. I can't unfortunately offer any specific advice to resolve at this time other than perhaps to try a chroot compiliation instead, or run your byond in a chroot and compile bygex in that same chroot.
+    #We've also had some issues with installing the libboost1.58 as it seems to have a package dependency 
+    #that is not multiarched. I can't unfortunately offer any specific advice to resolve at this time other
+    #than perhaps to try a chroot compiliation instead, or run your byond in a chroot and compile bygex in 
+    #that same chroot.
 ##RHEL/CentOS 64-bit instructions
 
     Packages required to build (RHEL/CentOS platforms) (assumes 64 bit)
