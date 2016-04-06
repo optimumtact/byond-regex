@@ -105,13 +105,14 @@ If you're still having trouble, try setting the LD_LIBRARY_PATH to the folder co
 
 Finally if that's not working, open up the bygex dm code in your repo and edit the define to be the direct full path to your compiled libbygex.so file. Run DreamDaemon with strace again and ensure that it loads your file.
 
-On tgstation the file with the library path define is https://github.com/optimumtact/-tg-station/blob/master/code/__HELPERS/bygex/bygex.dm
+On tgstation the file with the library path define is https://github.com/tgstation/-tg-station/blob/master/code/__HELPERS/510.dm#L9
 
 ##Strace reports it found the file but I still get runtime exceptions
 
 If your strace output looks like the following, but you still get runtime errors in the log, this usually indicates that there is a compilation issue with the library, first try running the make test again, to see if there are any warnings or errors. Unfortunately in this situation the cause could be any number of reasons, so I can't give specific advice. Some things to try
 
 1)Compile the code manually instead of using make
+
 2)Compile the test exe and run it instead of using make
 
     g++ -o bygex_test client.cpp -m32 -std=C+11 -pedantic -Werror -Wall -Wextra -L. -lbygex
