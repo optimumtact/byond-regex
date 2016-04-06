@@ -54,7 +54,7 @@ This will build a test executable and run it for some quick comparisons then cle
 Now we have to put it somewhere where BYOND will see it. By default tgstation13 looks for code/__HELPERS/bygex - I'm not a huge fan of this as it means the file extension isn't there to indicate the actual file type, so I recommend moving libbygex.so to the bin folder, then softlinking bin/bygex to it. This ensures you can see at a glance when you ls -l that bygex is a soft link to libbygex.so and that it is a shared library.
 
     mv libbygex.so code/__HELPERS/.
-    cd bin
+    cd code/__HELPERS
     #soft link the so to the bygex path
     ln -s libbygex.so bygex
 
